@@ -260,6 +260,20 @@ h6 {
   background: #4dae3c;
 }
 
+.btn--pill2 {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.btn--red {
+  background: #FF0000;
+}
+
+.btn--red:hover {
+  background: #4dae3c;
+}
+
 /* ==========================================================================
    #DATE PICKER
    ========================================================================== */
@@ -496,7 +510,7 @@ input {
 }
 
 .card-3 .card-heading {
-  background: url("../images/bg-heading-03.jpg") top left/cover no-repeat;
+  background: url("../img/bg-img/bg-heading-03.jpg") top left/cover no-repeat;
   display: table-cell;
   width: 50%;
 }
