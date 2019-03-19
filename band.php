@@ -1,6 +1,20 @@
 <?php
 
 include("connection.php");
+$check = "select name,image from bandlist";
+
+$result = mysqli_query($conn,$check);
+
+$i=0;
+
+if(mysqli_num_rows($result)>0){
+
+while($row = mysqli_fetch_assoc($result)){
+    $name[$i] = $row['name'];
+    $image[$i] = $row['image'];
+    $i=$i+1;
+}
+}
 
 ?>
 
@@ -149,41 +163,42 @@ include("connection.php");
                                 <!-- Single Show Item -->
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/55.jpg" alt="">
+                                        <img src="img/bg-img/<?php echo $image[2]; ?>" alt="">
                                         <div class="overlay-content">
                                             <div class="text-center">
-                                                <h5><?php include('bandsearch.php') ?></h5>
+                                                <h5><?php echo $name[2] ?> </h5>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
+                                 
 
                                 <!-- Single Show Item -->
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/56.jpg" alt="">
+                                        <img src="img/bg-img/<?php echo $image[3]; ?>" alt="">
                                         <div class="overlay-content">
                                             <div class="text-center">
-                                                <h5>Trainwreck</h5>
+                                                <h5><?php echo $name[3] ?></h5>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
 
                                 <!-- Single Show Item -->
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/57.jpg" alt="">
+                                        <img src="img/bg-img/<?php echo $image[1]; ?>" alt="">
                                         <div class="overlay-content">
                                             <div class="text-center">
-                                                <h5>Cryptic Fate</h5>
+                                                <h5><?php echo $name[1] ?></h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
 
                                 
 
