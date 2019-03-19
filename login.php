@@ -1,3 +1,8 @@
+<?php
+include('verification.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,15 +137,15 @@
                     <form name="form" action="login.php" method="POST">
 
                       <div class="input-group"> <?php if(isset($message)) { echo $message; } ?>
-                          <input class="input--style-3" type="email" placeholder="Email" name="email" value="<?php if(isset($_COOKIE["user_login])) { echo $_COOKIE[user_login]; } ?>" />   
+                          <input class="input--style-3" type="email" placeholder="Email" name="email" value="<?php if(isset($_COOKIE['user_login'])) { echo $_COOKIE['user_login']; } ?> "    
                       </div>
 
                         <div class="input-group">
-                            <input class="input--style-3" type="password" placeholder="Password" name="password" value="<?php if(isset($_COOKIE["user_password])) { echo $_COOKIE[user_password]; } ?>" > 
+                            <input class="input--style-3" type="password" placeholder="Password" name="password" value="<?php if(isset($_COOKIE['user_password'])) { echo $_COOKIE['user_password']; } ?>" >
                         </div>
                         <!-- remember button -->
                         <div class="p-t-10">
-                            <input type="checkbox" name="remember" <?php if(isset($_COOKIE[user_login])) { ?> checked <?php } ?> />  
+                            <input type="checkbox" name="remember" <?php if(isset($_COOKIE['user_login'])) { ?> checked <?php } ?> />  
                             <label for ="remember-me" >Remember Me</label>
                         </div>
 
