@@ -1,12 +1,8 @@
 <?php
 
-session_start();
+include("connection.php");
 
-$con  =new mysqli('localhost','root','','ugn');
-
-
-
-$email = $_POST['userName']; 
+$email = $_POST['userName'];
 $password = $_POST['pass'];
 
 $check = "select * from authenticate where Email = '$email' && Password = '$password'";

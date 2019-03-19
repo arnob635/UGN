@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
      <!-- Title -->
-    <title>UGN | Registration</title>
+    <title>UGN | Login</title>
 
     <!-- Favicon -->
     <link rel="icon" href="./img/core-img/favicon.ico">
@@ -128,30 +128,26 @@
             <div class="card card-3">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Band Registration</h2>
-                    <form name="form" action="signup.php" method="POST">
-                        <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Band Name" name="name" value="">
-                        </div>
+                    <h2 class="title">Log In</h2>
+                    <form name="form" action="login.php" method="POST">
+
+                      <div class="input-group">
+                          <input class="input--style-3" type="email" placeholder="Email" name="email">
+                      </div>
+
                         <div class="input-group">
                             <input class="input--style-3" type="password" placeholder="Password" name="password" value="">
                         </div>
-                        <div class="input-group">
-                            <input class="input--style-3" type="email" placeholder="Email" name="email">
-                        </div>
-                        <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Phone" name="phone">
-                        </div>
+
                         <div class="p-t-10">
-                            <button class="btn btn--pill btn--green" type="submit" onclick="validateForm()">Submit</button>
-
-
+                            <button class="btn btn--pill btn--green" type="submit" onclick="validateForm()">Log In</button>
                             <div>
                               <br>
                             </div>
-                        <h3 class="input--style-3">Already have an account?</h3>
+                        <h3 class="input--style-3">Don't have an account? Sign In</h3>
+
                         <div class="p-t-10">
-                            <button class="btn btn--pill2 btn--red" type="login">Login</button>
+                            <button class="btn btn--pill2 btn--red" type="login">Sign In</button>
                         </div>
                     </form>
                 </div>

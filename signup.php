@@ -1,19 +1,15 @@
 <?php
 
-session_start();
+include("connection.php");
 
-$con  =new mysqli('localhost','root','','ugn');
-
-
-
-$name =$_POST['userName'];
-$password = $_POST['pass'];
+$name =$_POST['name'];
+$password = $_POST['password'];
 $email = $_POST['email'];
-$isBand=$_POST['isBand'];
+$phone=$_POST['phone'];
 
-$check = "select * from authenticate where Name = '$name'";
+$check = "SELECT * FROM bandData WHERE bandName = '$name'";
 
-$result = mysqli_query($con,$check);
+$result = mysqli_query($conn,$check);
 
 $num = mysqli_num_rows($result);
 
@@ -21,8 +17,15 @@ if($num==1){
 	echo "Band/Organization already exists";
 }
 else{
-	$reg = "insert into authenticate (Name,Password,Email,isBand) values ('$name','$password','$email','$isBand')";
-	$ruery=mysqli_query($con,$reg);
+	$reg = "INSERT INTO bandData(bandName,password,email,phone) VALUES ('$name','$password','$email','$phone')";
+	if(mysqli_query($conn,$reg)){
+		echo "New record created succesfully";
+		echo "Welcome to UGN";
+	}
+	else {
+	  echo "Error: " .$sql."<br>".mysqli_error($conn);
+	}
 
-	echo "Welcome to UGN";
 }
+
+?>
