@@ -6,7 +6,7 @@ $con  =new mysqli('localhost','root','','ugn');
 
 
 
-$name =$_POST['userName']; 
+$name =$_POST['userName'];
 $password = $_POST['pass'];
 $email = $_POST['email'];
 $isBand=$_POST['isBand'];
