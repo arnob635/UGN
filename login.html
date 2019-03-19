@@ -131,12 +131,17 @@
                     <h2 class="title">Log In</h2>
                     <form name="form" action="login.php" method="POST">
 
-                      <div class="input-group">
-                          <input class="input--style-3" type="email" placeholder="Email" name="email">
+                      <div class="input-group"> <?php if(isset($message)) { echo $message; } ?>
+                          <input class="input--style-3" type="email" placeholder="Email" name="email" value="<?php if(isset($_COOKIE["user_login])) { echo $_COOKIE[user_login]; } ?>"  > 
                       </div>
 
                         <div class="input-group">
-                            <input class="input--style-3" type="password" placeholder="Password" name="password" value="">
+                            <input class="input--style-3" type="password" placeholder="Password" name="password" value="<?php if(isset($_COOKIE["user_password])) { echo $_COOKIE[user_password]; } ?>" > 
+                        </div>
+                        <!-- remember button -->
+                        <div class="p-t-10">
+                            <input type="checkbox" name="remember" <?php if(isset($_COOKIE[user_login])) { ?> checked <?php } ?> />  
+                            <label for ="remember-me" >Remember Me</label>
                         </div>
 
                         <div class="p-t-10">
@@ -144,7 +149,9 @@
                             <div>
                               <br>
                             </div>
-                        <h3 class="input--style-3">Don't have an account? Sign In</h3>
+                        <h3 class="input--style-3">Don't have an account? Sign Up</h3>
+
+
 
                         <div class="p-t-10">
                             <button class="btn btn--pill2 btn--red" type="login">Sign In</button>
