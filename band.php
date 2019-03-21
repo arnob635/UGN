@@ -1,20 +1,25 @@
 <?php
 
 include("connection.php");
-$check = "select name,image from bandlist";
+//$check = "select  COL2,COL3 from TABLE2";
 
+$check = "SELECT name,img FROM bandList";
+
+
+//$result = mysqli_query($conn,$check);
 $result = mysqli_query($conn,$check);
-
-$i=0;
+$i=1;
 
 if(mysqli_num_rows($result)>0){
 
 while($row = mysqli_fetch_assoc($result)){
+
     $name[$i] = $row['name'];
-    $image[$i] = $row['image'];
+    $image[$i] = $row['img'];
     $i=$i+1;
+  }
 }
-}
+
 
 ?>
 
@@ -155,7 +160,7 @@ while($row = mysqli_fetch_assoc($result)){
     </section>
     <!-- Show Welcome Area End -->
 
-  
+
                     <div class="tab-content" id="showRoutineTabContent">
                         <!-- Single Tab Content -->
                         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab-1">
@@ -170,8 +175,8 @@ while($row = mysqli_fetch_assoc($result)){
                                             </div>
                                         </div>
                                     </div>
-                                </div> 
-                                 
+                                </div>
+
 
                                 <!-- Single Show Item -->
                                 <div class="col-12 col-md-6 col-lg-4">
@@ -183,7 +188,7 @@ while($row = mysqli_fetch_assoc($result)){
                                             </div>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <!-- Single Show Item -->
                                 <div class="col-12 col-md-6 col-lg-4">
@@ -198,11 +203,11 @@ while($row = mysqli_fetch_assoc($result)){
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
-                                
 
-                       
+
+
       <!-- Footer Area Start -->
     <footer class="footer-area">
         <!-- Main Footer Area -->
@@ -353,7 +358,7 @@ while($row = mysqli_fetch_assoc($result)){
             </div>
         </div>
         <!-- Main Footer Area End -->
-        
+
         <!-- Copywrite Text -->
         <div class="copywrite-area">
             <div class="container">

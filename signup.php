@@ -17,7 +17,7 @@ if($num==1){
 	echo "Band/Organization already exists";
 }
 else{
-	$reg = "INSERT INTO authenticate(Name,Password,Email) VALUES ('$name','$password','$email')";
+	$reg = "INSERT INTO bandData(bandName,password,email) VALUES ('$name','$password','$email')";
 	if(mysqli_query($conn,$reg)){
 		echo "New record created succesfully";
 		echo "Welcome to UGN";

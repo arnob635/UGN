@@ -2,19 +2,33 @@
 
 include("connection.php");
 
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+$check = "select * from bandData where email = '$email' && password = '$password'";
+
+$result = mysqli_query($conn,$check);
+
+$num = mysqli_num_rows($result);
+
+if($num==1){
+	echo "Login succesfull";
+}
+else{
+	echo "Incorrect Email/password";
+}
 
 if (isset ($_POST['login'])) {
-	
-	$check = "select * from authenticate where Email = '$email' && Password = '$password'";
-	$result = mysqli_query($con,$check);
+
+
 
 	$num = mysqli_num_rows($result);
 
 	if($num){
 		if (!empty($_POST["remember"])) {
-			setcookie("user_login", $_POST["email"], time()+ (7 * 24 * 60 * 60)); // one week 
+			setcookie("user_login", $_POST["email"], time()+ (7 * 24 * 60 * 60)); // one week
 			setcookie("user_password", $_POST["password"], time()+ (7 * 24 * 60 * 60)); // one week
-			$_SESSION["Email"] = $email; 
+			$_SESSION["email"] = $email;
 
 		}
 		else{
@@ -27,7 +41,7 @@ if (isset ($_POST['login'])) {
 				setcookie ("user_password","");
 			}
 
-			header("location:index.html"); 
+			header("location:index.html");
 		}
 	}
 
