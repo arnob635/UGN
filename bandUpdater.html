@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
      <!-- Title -->
-    <title>UGN | Registration</title>
+    <title>UGN | Update Info</title>
 
     <!-- Favicon -->
     <link rel="icon" href="./img/core-img/favicon.ico">
@@ -123,41 +123,33 @@
     <!-- Header Area End -->
 
 
-
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
-                <div class="card-heading"></div>
+                <!--<div class="card-heading"></div> -->
                 <div class="card-body">
-                    <h2 class="title">Band Registration</h2>
-                    <form name="form" action="signup.php" method="POST">
-                        <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Band Name" name="name" value="">
-                        </div>
-                        <div class="input-group">
-                            <input class="input--style-3" type="email" placeholder="Email" name="email">
-                        </div>
-                        <div class="input-group">
-                            <input class="input--style-3" type="password" placeholder="Password" name="password" value="">
-                        </div>
+                    <h2 class="title">Update Info</h2>
+                    <form name="form" action="infoUpdate.php" method="POST">
 
+                      <div class="input-group-2">
+                          <input class="input--style-3" type="textarea" id="txtbox" placeholder="About" name="about">
+                      </div>
 
-                        <div class="p-t-10">
-                            <button class="btn btn--pill btn--green" type="submit" onclick="validateForm()">Submit</button>
+                      <div class="input-group">
+                          <input class="input--style-3" type="text" placeholder="contact info" name="contact">
+                      </div>
+
+                        <div class="p-l-10">
+                            <button class="btn btn--pill btn--green" type="submit" onclick="">Submit</button>
                             <div>
                               <br>
                             </div>
-                        <h3 class="input--style-3">Already have an account?</h3>
-                        <div class="p-t-10">
-                            <button class="btn btn--pill2 btn--red" type="login">Login</button>
-                        </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-
 
     <!-- Jquery JS-->
     <script src="vendor/jquery/jquery.min.js"></script>

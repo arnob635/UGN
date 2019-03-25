@@ -8,6 +8,8 @@ $email = $_POST['email'];
 $url ="localhost/UGN/bandprofile.php";
 
 
+
+
 $check = "SELECT * FROM bandauth WHERE bandName = '$name'";
 
 
@@ -40,11 +42,20 @@ else{
 
 	$id = mysqli_insert_id($conn);
 
+	$_SESSION['id'] = $id;
+
 	$list = "INSERT INTO bandlist(id,bandName,url) VALUES ('$id','$name','$url')";
 	if(mysqli_query($conn,$list)){
 		echo "New record in bandList created succesfully";
+		// Simulate a mouse click:
+
+		echo '<script>
+
+  location.replace("http://localhost/UGN/bandUpdater.html")
+
+</script>';
+
 	}
 
 }
-
 ?>
