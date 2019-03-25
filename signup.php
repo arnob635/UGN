@@ -33,23 +33,17 @@ else{
 		echo "New record created succesfully";
 		echo "Welcome to UGN";
 
-
 	}
 	else {
 	  echo "Error: " .$sql."<br>".mysqli_error($conn);
 	}
-	$id = "SELECT id FROM bandauth WHERE bandName = $name";
-	$idresult = mysqli_query($conn,$id);
 
-	$list = "INSERT INTO bandlist(id,bandName,url) VALUES ('$idresult','$name','$url')";
+	$id = mysqli_insert_id($conn);
+
+	$list = "INSERT INTO bandlist(id,bandName,url) VALUES ('$id','$name','$url')";
 	if(mysqli_query($conn,$list)){
-		echo "New record created succesfully";
-		echo "Welcome to UGN";
+		echo "New record in bandList created succesfully";
 	}
-
-	echo $idresult;
-
-
 
 }
 
