@@ -3,7 +3,7 @@
 include("connection.php");
 //$check = "select  COL2,COL3 from TABLE2";
 
-$check = "SELECT name,img FROM bandList";
+$check = "SELECT bandName,img FROM bandlist";
 
 
 //$result = mysqli_query($conn,$check);
@@ -14,7 +14,7 @@ if(mysqli_num_rows($result)>0){
 
 while($row = mysqli_fetch_assoc($result)){
 
-    $name[$i] = $row['name'];
+    $name[$i] = $row['bandName'];
     $image[$i] = $row['img'];
     $i=$i+1;
   }
@@ -189,6 +189,7 @@ while($row = mysqli_fetch_assoc($result)){
                                         </div>
                                     </div>
                                 </div>
+                             
 
                                 <!-- Single Show Item -->
                                 <div class="col-12 col-md-6 col-lg-4">

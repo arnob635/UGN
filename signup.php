@@ -5,9 +5,10 @@ include("connection.php");
 $name =$_POST['name'];
 $password = $_POST['password'];
 $email = $_POST['email'];
-$phone=$_POST['phone'];
+//$phone=$_POST['phone'];
 
-$check = "SELECT * FROM bandData WHERE bandName = '$name'";
+$check = "SELECT * FROM bandD
+ata WHERE bandName = '$name'";
 
 $result = mysqli_query($conn,$check);
 
