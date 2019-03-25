@@ -5,7 +5,7 @@ include("connection.php");
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$check = "select * from bandData where email = '$email' && password = '$password'";
+$check = "SELECT * FROM bandauth WHERE email = '$email' && password = '$password'";
 
 $result = mysqli_query($conn,$check);
 
@@ -19,9 +19,7 @@ else{
 }
 
 if (isset ($_POST['login'])) {
-
-
-
+	
 	$num = mysqli_num_rows($result);
 
 	if($num){
