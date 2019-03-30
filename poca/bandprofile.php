@@ -37,6 +37,23 @@ while($row1 = mysqli_fetch_assoc($result1)){
   }
 }
 
+$songGet = "SELECT songName,songURL FROM songs WHERE id = 7";
+
+
+//$result = mysqli_query($conn,$check);
+$songResult = mysqli_query($conn,$songGet);
+
+
+if(mysqli_num_rows($songResult)>0){
+
+while($songRow = mysqli_fetch_assoc($songResult)){
+
+    $songName = $songRow['songName'];
+    $songURL = $songRow['songURL'];
+   
+  }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -180,18 +197,18 @@ while($row1 = mysqli_fetch_assoc($result1)){
               <!-- Welcome Music Area -->
               <div class="poca-music-area mt-100 d-flex align-items-center flex-wrap" data-animation="fadeInUp" data-delay="900ms">
                 <div class="poca-music-thumbnail">
-                  <img src="./img/bg-img/4.jpg" alt="">
+                  <img src="./img/bg-img/<?php echo $image ?>" alt="">
                 </div>
                 <div class="poca-music-content">
                   <span class="music-published-date">December 9, 2018</span>
-                  <h2>song name</h2>
+                  <h2><?php echo $songName ?></h2>
                   <div class="music-meta-data">
                     <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a href="#" class="music-duration">00:02:56</a></p>
                   </div>
                   <!-- Music Player -->
                   <div class="poca-music-player">
                     <audio preload="auto" controls>
-                      <source src="audio/dummy-audio.mp3">
+                      <source src="audio/joyo.mp3">
                     </audio>
                   </div>
                   <!-- Likes, Share & Download -->
@@ -237,7 +254,7 @@ while($row1 = mysqli_fetch_assoc($result1)){
                   <!-- Music Player -->
                   <div class="poca-music-player">
                     <audio preload="auto" controls>
-                      <source src="audio/dummy-audio.mp3">
+                      <source src="audio/joyo.mp3">
                     </audio>
                   </div>
                   <!-- Likes, Share & Download -->
@@ -283,7 +300,7 @@ while($row1 = mysqli_fetch_assoc($result1)){
                   <!-- Music Player -->
                   <div class="poca-music-player">
                     <audio preload="auto" controls>
-                      <source src="audio/dummy-audio.mp3">
+                      <source src="audio/ .<?php echo $songName ?>">
                     </audio>
                   </div>
                   <!-- Likes, Share & Download -->
