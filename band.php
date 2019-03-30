@@ -166,32 +166,35 @@ while($row = mysqli_fetch_assoc($result)){
                         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab-1">
                             <div class="row">
                                 <!-- Single Show Item -->
-                                <div class="col-12 col-md-6 col-lg-4">
+                              <!--  <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/<?php echo $image[2]; ?>" alt="">
+                                        <img src="img/bg-img/<?php echo $image[1]; ?>" alt="">
                                         <div class="overlay-content">
                                             <div class="text-center">
-                                                <h5><?php echo $name[2] ?> </h5>
+                                                <h5><?php echo $name[1] ?> </h5>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-
-                                <!-- Single Show Item -->
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/<?php echo $image[3]; ?>" alt="">
-                                        <div class="overlay-content">
-                                            <div class="text-center">
-                                                <h5><?php echo $name[3] ?></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                             
+                                </div> -->
 
                                 <!-- Single Show Item -->
+                              <?php for ($i=1; $i<$row;$i++){
+                                echo $i;
+
+                               echo  '<div class="col-12 col-md-6 col-lg-4">';
+                                  echo '  <div class="single-show-item mb-30">';
+                                    echo '    <img src="img/bg-img/"'.$image[$i] .'alt="">';
+                                      echo '  <div class="overlay-content">';
+                                        echo '    <div class="text-center">';
+                                              echo '  <h5> '. $name[$i].'</h5>';
+                                            echo '  </div>';
+                                        echo '</div>';
+                                  echo '  </div>';
+                                echo ' </div>';
+                              } ?>
+
+
+                                <!-- Single Show Item
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
                                         <img src="img/bg-img/<?php echo $image[1]; ?>" alt="">
@@ -201,7 +204,7 @@ while($row = mysqli_fetch_assoc($result)){
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>

@@ -13,13 +13,19 @@ $num = mysqli_num_rows($result);
 
 if($num==1){
 	echo "Login succesfull";
+
+	echo '<script>
+
+location.replace("http://localhost/UGN/poca/index.html")
+
+</script>';
 }
 else{
 	echo "Incorrect Email/password";
 }
 
 if (isset ($_POST['login'])) {
-	
+
 	$num = mysqli_num_rows($result);
 
 	if($num){
