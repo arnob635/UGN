@@ -178,19 +178,19 @@ while($row = mysqli_fetch_assoc($result)){
                                 </div> -->
 
                                 <!-- Single Show Item -->
-                              <?php for ($i=1; $i<$row;$i++){
+                              <?php for ($i=1; $i<4;$i++){
                                 echo $i;
 
-                               echo  '<div class="col-12 col-md-6 col-lg-4">';
-                                  echo '  <div class="single-show-item mb-30">';
-                                    echo '    <img src="img/bg-img/"'.$image[$i] .'alt="">';
-                                      echo '  <div class="overlay-content">';
-                                        echo '    <div class="text-center">';
-                                              echo '  <h5> '. $name[$i].'</h5>';
-                                            echo '  </div>';
-                                        echo '</div>';
-                                  echo '  </div>';
-                                echo ' </div>';
+                               echo  '<br><div class="col-12 col-md-6 col-lg-4"><br>
+                                     <div class="single-show-item mb-30"><br>
+                                         <img src="img/bg-img/"'.$image[$i] .'alt=""><br>
+                                         <div class="overlay-content"><br>
+                                             <div class="text-center"><br>
+                                                 <h5>'. $name[$i].'</h5><br>
+                                               </div><br>
+                                        </div><br>
+                                     </div><br>
+                                  </div><br>';
                               } ?>
 
 
