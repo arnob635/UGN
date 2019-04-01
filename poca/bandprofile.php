@@ -3,7 +3,7 @@
 include("connection.php");
 //$check = "select  COL2,COL3 from TABLE2";
 
-$check = "SELECT bandName,img FROM bandlist WHERE id = 7";
+$check = "SELECT bandName,img FROM bandlist WHERE id = 1";
 
 
 //$result = mysqli_query($conn,$check);
@@ -16,11 +16,11 @@ while($row = mysqli_fetch_assoc($result)){
 
     $name = $row['bandName'];
     $image = $row['img'];
-   
+
   }
 }
 
-  $get = "SELECT info FROM bandinfo WHERE id = 7";
+  $get = "SELECT info FROM bandinfo WHERE id = 1";
 
 
 //$result = mysqli_query($conn,$check);
@@ -32,12 +32,12 @@ if(mysqli_num_rows($result1)>0){
 while($row1 = mysqli_fetch_assoc($result1)){
 
     $info = $row1['info'];
-    
-   
+
+
   }
 }
 
-$songGet = "SELECT songName,songURL FROM songs WHERE id = 7";
+$songGet = "SELECT songName,songURL FROM songs WHERE id = 1";
 
 
 //$result = mysqli_query($conn,$check);
@@ -50,7 +50,7 @@ while($songRow = mysqli_fetch_assoc($songResult)){
 
     $songName = $songRow['songName'];
     $songURL = $songRow['songURL'];
-   
+
   }
 }
 
