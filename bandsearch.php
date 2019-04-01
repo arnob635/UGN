@@ -18,7 +18,7 @@ if(!$conn){
 
 
 
-$check = "select name from bandlist where UID = 1";
+$check = "select name from TABLE1 where UID = 1";
 
 $result = mysqli_query($conn,$check);
 

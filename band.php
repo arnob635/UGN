@@ -1,17 +1,17 @@
 <?php
 
 include("connection.php");
-$check = "select name,image from bandlist";
+$check = "SELECT COL 2,COL 3 from TABLE 1";
 
-$result = mysqli_query($conn,$check);
+$result = mysqli_query($conn, $check);
 
 $i=0;
 
 if(mysqli_num_rows($result)>0){
 
 while($row = mysqli_fetch_assoc($result)){
-    $name[$i] = $row['name'];
-    $image[$i] = $row['image'];
+    $name[$i] = $row['COL 2'];
+    $image[$i] = $row['COL 3'];
     $i=$i+1;
 }
 }
