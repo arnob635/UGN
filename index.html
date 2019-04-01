@@ -40,8 +40,86 @@
                         <!-- Close Button -->
                         <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
                         <!-- Form -->
+
                         <form action="index.html" method="post">
-                            <input type="search" name="top-search-bar" class="form-control" placeholder="Type keywords and hit enter...">
+                          <!--    <input type="text" name="top-search-bar" onkeyup="myFunction()" class="form-control" placeholder="Type keywords and hit enter...">-->
+
+                            <style>
+          * {
+            box-sizing: border-box;
+          }
+
+          #myInput {
+            background-image: url('/css/searchicon.png');
+            background-position: 10px 12px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+          }
+
+          #myUL {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+          }
+
+          #myUL li a {
+            border: 1px solid #ddd;
+            margin-top: -1px; /* Prevent double borders */
+            background-color: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: block
+          }
+
+          #myUL li a:hover:not(.header) {
+            background-color: #eee;
+          }
+          </style>
+          </head>
+          <body>
+
+          <h2>Search Bands</h2>
+
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+          <!--   <h3>What other people have searched for..</h3>-->
+          <ul id="myUL">
+            <li><a href="#">Nemesis</a></li>
+            <li><a href="#">Black</a></li>
+
+            <li><a href="#">Artcell</a></li>
+            <li><a href="#">Martian Love</a></li>
+
+            <li><a href="#">Owned</a></li>
+            <li><a href="#">Conclusion</a></li>
+            <li><a href="#">Attic</a></li>
+          </ul>
+
+          <script>
+          function myFunction() {
+              var input, filter, ul, li, a, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("myUL");
+              li = ul.getElementsByTagName("li");
+              for (i = 0; i < li.length; i++) {
+                  a = li[i].getElementsByTagName("a")[0];
+                  txtValue = a.textContent || a.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      li[i].style.display = "";
+                  } else {
+                      li[i].style.display = "none";
+                  }
+              }
+          }
+          </script>
+
                             <button type="submit">Search</button>
                         </form>
                         <!-- Search Button -->
@@ -93,10 +171,10 @@
                                 <ul id="nav">
                                     <li><a href="./index.html">Home</a></li>
                                     <li><a href="#about">About</a></li>
-                                    <li><a href="./band.html">Bands</a></li>
+                                    <li><a href="./band.php">Bands</a></li>
                                     <li><a href="./events.html">Events</a></li>
                                     <li><a href="./blog.html">Blog</a></li>
-                                    <li><a href="./login.html">Login</a></li>
+                                    <li><a href="./login.php">Login</a></li>
                                     <li><a href="./registration.html">Sign Up</a></li>
 
                                 </ul>
@@ -235,14 +313,14 @@
                         </div>
 
                         <!-- Featured Post Area -->
-                        <div class="featured-post-area bg-img bg-overlay mb-30" style="background-image: url(img/bg-img/11.jpg);">
+                        <div class="featured-post-area bg-img bg-overlay mb-30" style="background-image: url(img/bg-img/bangla_band_music_nemesis.jpg);">
                             <!-- Post Overlay -->
                             <div class="post-overlay">
                                 <div class="post-meta">
                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 2.1k</a>
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 3.6k</a>
                                 </div>
-                                <a href="single-blog.html" class="post-title">The light and music exposition hits los angeles in the fashion week</a>
+                                <a href="single-blog.html" class="post-title">Nemesis releases new song : Ami</a>
                             </div>
                         </div>
 
@@ -418,132 +496,6 @@
 
 
 
-    <!-- Weekly Sehedule Area Start -->
-    <section class="razo-weekly-schedule-area section-padding-80">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="weekly-schedule-table table-responsive">
-                        <!-- Section Heading -->
-                        <div class="col-12">
-                            <div class="section-heading text-center">
-                                <h2>Weekly Sehedule</h2>
-                            </div>
-                        </div>
-
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col">
-                                        <p>Monday</p>
-                                    </th>
-                                    <th scope="col">
-                                        <p>Tuesday</p>
-                                    </th>
-                                    <th scope="col">
-                                        <p>Wednesday</p>
-                                    </th>
-                                    <th scope="col">
-                                        <p>Thursday</p>
-                                    </th>
-                                    <th scope="col">
-                                        <p>Friday</p>
-                                    </th>
-                                    <th scope="col">
-                                        <p>Saturday</p>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        <p>As BBC Radio 5 live</p>
-                                        <span>01:00 am - 02:30 am</span>
-                                    </th>
-                                    <td>
-                                        <h5>Andrew Peach Birthday Surprise!</h5>
-                                        <span>13:00 pm - 16:00 pm</span>
-                                    </td>
-                                    <td>
-                                        <h5>As BBC Radio 5 live</h5>
-                                        <span>23:00 pm - 02:00 am</span>
-                                    </td>
-                                    <td>
-                                        <h5>Berkshire Sport: Extra Time</h5>
-                                        <span>01:00 am - 03:30 am</span>
-                                    </td>
-                                    <td>
-                                        <h5>As BBC Radio 5 live</h5>
-                                        <span>01:00 am - 02:30 am</span>
-                                    </td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">
-                                        <p>Berkshire Sport: Extra Time</p>
-                                        <span>05:30 am - 06:30 am</span>
-                                    </th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <h5>Tony Blackburn on BBC Radio</h5>
-                                        <span>03:00 am - 05:00 am</span>
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <h5>Stereo Underground</h5>
-                                        <span>03:00 am - 05:00 am</span>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td>
-                                        <h5>BBC Music Introducing in</h5>
-                                        <span>10:00 am - 12:00 pm</span>
-                                    </td>
-                                    <td>
-                                        <h5>Stereo Underground</h5>
-                                        <span>13:00 pm - 15:00 pm</span>
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <h5>Sport on BBC Radio Berkshire</h5>
-                                        <span>07:00 am - 09:30 am</span>
-                                    </td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">
-                                        <p>Andrew Peach Birthday Surprise!</p>
-                                        <span>13:00 pm - 16:00 pm</span>
-                                    </th>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <h5>BBC Music Introducing in</h5>
-                                        <span>17:00 pm - 20:00 pm</span>
-                                    </td>
-                                    <td>
-                                        <h5>Andrew Peach Birthday Surprise!</h5>
-                                        <span>13:00 pm - 16:00 pm</span>
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <h5>Danyl Johnson and Natasha Watts</h5>
-                                        <span>13:00 pm - 16:00 pm</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Weekly Sehedule Area End -->
 
 
 

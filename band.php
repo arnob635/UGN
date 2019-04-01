@@ -1,20 +1,36 @@
 <?php
 
 include("connection.php");
+<<<<<<< HEAD
 $check = "SELECT COL 2,COL 3 from TABLE 1";
 
 $result = mysqli_query($conn, $check);
+=======
+//$check = "select  COL2,COL3 from TABLE2";
 
-$i=0;
+$check = "SELECT bandName,img FROM bandlist";
+
+>>>>>>> f1bc17c5c9fb1371104ee006a64f6f84b5b34ba1
+
+//$result = mysqli_query($conn,$check);
+$result = mysqli_query($conn,$check);
+$i=1;
 
 if(mysqli_num_rows($result)>0){
 
 while($row = mysqli_fetch_assoc($result)){
+<<<<<<< HEAD
     $name[$i] = $row['COL 2'];
     $image[$i] = $row['COL 3'];
+=======
+
+    $name[$i] = $row['bandName'];
+    $image[$i] = $row['img'];
+>>>>>>> f1bc17c5c9fb1371104ee006a64f6f84b5b34ba1
     $i=$i+1;
+  }
 }
-}
+
 
 ?>
 
@@ -155,37 +171,41 @@ while($row = mysqli_fetch_assoc($result)){
     </section>
     <!-- Show Welcome Area End -->
 
-  
+
                     <div class="tab-content" id="showRoutineTabContent">
                         <!-- Single Tab Content -->
                         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab-1">
                             <div class="row">
                                 <!-- Single Show Item -->
-                                <div class="col-12 col-md-6 col-lg-4">
+                              <!--  <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/<?php echo $image[2]; ?>" alt="">
+                                        <img src="img/bg-img/<?php echo $image[1]; ?>" alt="">
                                         <div class="overlay-content">
                                             <div class="text-center">
-                                                <h5><?php echo $name[2] ?> </h5>
+                                                <h5><?php echo $name[1] ?> </h5>
                                             </div>
                                         </div>
                                     </div>
-                                </div> 
-                                 
+                                </div> -->
 
                                 <!-- Single Show Item -->
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/<?php echo $image[3]; ?>" alt="">
-                                        <div class="overlay-content">
-                                            <div class="text-center">
-                                                <h5><?php echo $name[3] ?></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
+                              <?php for ($i=1; $i<4;$i++){
+                                echo $i;
 
-                                <!-- Single Show Item -->
+                               echo  '<br><div class="col-12 col-md-6 col-lg-4"><br>
+                                     <div class="single-show-item mb-30"><br>
+                                         <img src="img/bg-img/"'.$image[$i] .'alt=""><br>
+                                         <div class="overlay-content"><br>
+                                             <div class="text-center"><br>
+                                                 <h5>'. $name[$i].'</h5><br>
+                                               </div><br>
+                                        </div><br>
+                                     </div><br>
+                                  </div><br>';
+                              } ?>
+
+
+                                <!-- Single Show Item
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
                                         <img src="img/bg-img/<?php echo $image[1]; ?>" alt="">
@@ -195,14 +215,14 @@ while($row = mysqli_fetch_assoc($result)){
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
-                                
 
-                       
+
+
       <!-- Footer Area Start -->
     <footer class="footer-area">
         <!-- Main Footer Area -->
@@ -353,7 +373,7 @@ while($row = mysqli_fetch_assoc($result)){
             </div>
         </div>
         <!-- Main Footer Area End -->
-        
+
         <!-- Copywrite Text -->
         <div class="copywrite-area">
             <div class="container">

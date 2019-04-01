@@ -2,7 +2,6 @@
 include('verification.php');
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -134,10 +133,10 @@ include('verification.php');
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Log In</h2>
-                    <form name="form" action="login.php" method="POST">
+                    <form name="form" action="verification.php" method="POST">
 
                       <div class="input-group"> <?php if(isset($message)) { echo $message; } ?>
-                          <input class="input--style-3" type="email" placeholder="Email" name="email" value="<?php if(isset($_COOKIE['user_login'])) { echo $_COOKIE['user_login']; } ?> "    
+                          <input class="input--style-3" type="email" placeholder="Email" name="email" value="<?php if(isset($_COOKIE['user_login'])) { echo $_COOKIE['user_login']; } ?> "
                       </div>
 
                         <div class="input-group">
@@ -145,7 +144,7 @@ include('verification.php');
                         </div>
                         <!-- remember button -->
                         <div class="p-t-10">
-                            <input type="checkbox" name="remember" <?php if(isset($_COOKIE['user_login'])) { ?> checked <?php } ?> />  
+                            <input type="checkbox" name="remember" <?php if(isset($_COOKIE['user_login'])) { ?> checked <?php } ?> />
                             <label for ="remember-me" >Remember Me</label>
                         </div>
 
