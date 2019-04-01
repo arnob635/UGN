@@ -3,7 +3,7 @@
 include("connection.php");
 //$check = "select  COL2,COL3 from TABLE2";
 
-$check = "SELECT bandName,img FROM bandlist WHERE id = 1";
+$check = "SELECT bandName,img FROM bandlist WHERE id = 7";
 
 
 //$result = mysqli_query($conn,$check);
@@ -20,7 +20,7 @@ while($row = mysqli_fetch_assoc($result)){
   }
 }
 
-  $get = "SELECT info FROM bandinfo WHERE id = 1";
+  $get = "SELECT * FROM bandinfo WHERE id = 7";
 
 
 //$result = mysqli_query($conn,$check);
@@ -32,12 +32,13 @@ if(mysqli_num_rows($result1)>0){
 while($row1 = mysqli_fetch_assoc($result1)){
 
     $info = $row1['info'];
+    $contact = $row1['contact'];
 
 
   }
 }
 
-$songGet = "SELECT songName,songURL FROM songs WHERE id = 1";
+$songGet = "SELECT songName,songURL FROM songs WHERE id = 7";
 
 
 //$result = mysqli_query($conn,$check);
@@ -50,6 +51,46 @@ while($songRow = mysqli_fetch_assoc($songResult)){
 
     $songName = $songRow['songName'];
     $songURL = $songRow['songURL'];
+
+  }
+}
+
+$members = "SELECT * FROM members WHERE id = 7";
+
+
+//$result = mysqli_query($conn,$check);
+$memberResult = mysqli_query($conn,$members);
+
+
+if(mysqli_num_rows($memberResult)>0){
+
+  echo "found members";
+  $i=0;
+
+while($memberRow = mysqli_fetch_assoc($memberResult)){
+
+    $memberName[$i] = $memberRow['memberName'];
+    $memberPosition[$i] = $memberRow['memberPosition'];
+    $memberImage[$i] = $memberRow['memberImage'];
+    $i=$i+1;
+
+  }
+}
+
+$media = "SELECT * FROM socialMedia WHERE id = 7";
+
+
+//$result = mysqli_query($conn,$check);
+$mediaResult = mysqli_query($conn,$media);
+
+
+if(mysqli_num_rows($mediaResult)>0){
+
+while($mediaRow = mysqli_fetch_assoc($mediaResult)){
+
+    $fb = $mediaRow['fb'];
+    $ign = $mediaRow['ign'];
+    $youtube = $mediaRow['youtube'];
 
   }
 }
@@ -111,47 +152,16 @@ while($songRow = mysqli_fetch_assoc($songResult)){
             <!-- Nav Start -->
             <div class="classynav">
               <ul id="nav">
-                <li class="current-item"><a href="./index.html">Home</a></li>
-                <li><a href="#">Pages</a>
-                  <ul class="dropdown">
-                    <li><a href="./index.html">- Home</a></li>
-                    <li><a href="./podcast.html">- Podcast</a></li>
-                    <li><a href="./single-podcast.html">- Single Podcast</a></li>
-                    <li><a href="./about.html">- About Us</a></li>
-                    <li><a href="./blog.html">- Blog</a></li>
-                    <li><a href="./single-blog.html">- Blog Details</a></li>
-                    <li><a href="./contact.html">- Contact</a></li>
-                    <li><a href="#">- Dropdown</a>
-                      <ul class="dropdown">
-                        <li><a href="#">- Dropdown Item</a></li>
-                        <li><a href="#">- Dropdown Item</a>
-                          <ul class="dropdown">
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                            <li><a href="#">- Even Dropdown</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#">- Dropdown Item</a></li>
-                        <li><a href="#">- Dropdown Item</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="./podcast.html">Podcasts</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="#">Blog</a>
-                  <ul class="dropdown">
-                    <li><a href="./blog.html">- Blog</a></li>
-                    <li><a href="./single-blog.html">- Blog Details</a></li>
-                  </ul>
-                </li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li class="current-item"><a href="../index.html">Home</a></li>
+                
+                <li><a href="#Songs">Songs</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Contact">Contact</a></li>
               </ul>
 
               <!-- Top Search Area -->
               <div class="top-search-area">
-                <form action="index.html" method="post">
+                <form action="" method="post">
                   <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter...">
                   <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
@@ -159,11 +169,9 @@ while($songRow = mysqli_fetch_assoc($songResult)){
 
               <!-- Top Social Area -->
               <div class="top-social-area">
-                <a href="#" class="fa fa-facebook" aria-hidden="true"></a>
-                <a href="#" class="fa fa-twitter" aria-hidden="true"></a>
-                <a href="#" class="fa fa-pinterest" aria-hidden="true"></a>
-                <a href="#" class="fa fa-instagram" aria-hidden="true"></a>
-                <a href="#" class="fa fa-youtube-play" aria-hidden="true"></a>
+                <a href="<?php echo $fb ?>" class="fa fa-facebook" aria-hidden="true"></a>
+                <a href="<?php echo $ign ?>" class="fa fa-instagram" aria-hidden="true"></a>
+                <a href="<?php echo $youtube ?>" class="fa fa-youtube-play" aria-hidden="true"></a>
               </div>
 
             </div>
@@ -323,7 +331,7 @@ while($songRow = mysqli_fetch_assoc($songResult)){
   <!-- ***** Welcome Area End ***** -->
 
   <!-- ***** Latest Episodes Area Start ***** -->
-  <section class="poca-latest-epiosodes section-padding-80">
+  <section class="poca-latest-epiosodes section-padding-80" id="Songs">
     <div class="container">
       <div class="row">
         <!-- Section Heading -->
@@ -336,7 +344,7 @@ while($songRow = mysqli_fetch_assoc($songResult)){
       </div>
     </div>
 
-    <!-- Projects Menu -->
+    <!-- Projects Menu 
     <div class="container">
       <div class="poca-projects-menu mb-30 wow fadeInUp" data-wow-delay="0.3s">
         <div class="text-center portfolio-menu">
@@ -347,7 +355,7 @@ while($songRow = mysqli_fetch_assoc($songResult)){
           <button class="btn" data-filter=".tutor">Tutorials</button>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="container">
       <div class="row poca-portfolio">
@@ -357,13 +365,13 @@ while($songRow = mysqli_fetch_assoc($songResult)){
           <!-- Welcome Music Area -->
           <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
             <div class="poca-music-thumbnail">
-              <img src="./img/bg-img/5.jpg" alt="">
+              <img src="./img/bg-img/<?php echo $image ?>" alt="">
             </div>
             <div class="poca-music-content text-center">
               <span class="music-published-date mb-2">December 9, 2018</span>
               <h2><?php echo $songName ?></h2>
               <div class="music-meta-data">
-                <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a href="#" class="music-duration">00:02:56</a></p>
+                <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory"></a> | <a href="#" class="music-duration">00:02:56</a></p>
               </div>
               <!-- Music Player -->
               <div class="poca-music-player">
@@ -385,7 +393,7 @@ while($songRow = mysqli_fetch_assoc($songResult)){
 
         <!-- Single gallery Item -->
         <div class="col-12 col-md-6 single_gallery_item entre tutor wow fadeInUp" data-wow-delay="0.2s">
-          <!-- Welcome Music Area -->
+          <!-- Welcome Music Area 
           <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
             <div class="poca-music-thumbnail">
               <img src="./img/bg-img/6.jpg" alt="">
@@ -396,13 +404,13 @@ while($songRow = mysqli_fetch_assoc($songResult)){
               <div class="music-meta-data">
                 <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a href="#" class="music-duration">00:02:56</a></p>
               </div>
-              <!-- Music Player -->
+              <!-- Music Player 
               <div class="poca-music-player">
                 <audio preload="auto" controls>
                   <source src="audio/dummy-audio.mp3">
                 </audio>
               </div>
-              <!-- Likes, Share & Download -->
+              <!-- Likes, Share & Download 
               <div class="likes-share-download d-flex align-items-center justify-content-between">
                 <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
                 <div>
@@ -414,9 +422,9 @@ while($songRow = mysqli_fetch_assoc($songResult)){
           </div>
         </div>
 
-        <!-- Single gallery Item -->
+        <!-- Single gallery Item 
         <div class="col-12 col-md-6 single_gallery_item media wow fadeInUp" data-wow-delay="0.2s">
-          <!-- Welcome Music Area -->
+          <!-- Welcome Music Area 
           <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
             <div class="poca-music-thumbnail">
               <img src="./img/bg-img/7.jpg" alt="">
@@ -427,13 +435,13 @@ while($songRow = mysqli_fetch_assoc($songResult)){
               <div class="music-meta-data">
                 <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a href="#" class="music-duration">00:02:56</a></p>
               </div>
-              <!-- Music Player -->
+              <!-- Music Player 
               <div class="poca-music-player">
                 <audio preload="auto" controls>
                   <source src="audio/dummy-audio.mp3">
                 </audio>
               </div>
-              <!-- Likes, Share & Download -->
+              <!-- Likes, Share & Download 
               <div class="likes-share-download d-flex align-items-center justify-content-between">
                 <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
                 <div>
@@ -445,9 +453,9 @@ while($songRow = mysqli_fetch_assoc($songResult)){
           </div>
         </div>
 
-        <!-- Single gallery Item -->
+        <!-- Single gallery Item 
         <div class="col-12 col-md-6 single_gallery_item media wow fadeInUp" data-wow-delay="0.2s">
-          <!-- Welcome Music Area -->
+          <!-- Welcome Music Area 
           <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
             <div class="poca-music-thumbnail">
               <img src="./img/bg-img/8.jpg" alt="">
@@ -458,13 +466,13 @@ while($songRow = mysqli_fetch_assoc($songResult)){
               <div class="music-meta-data">
                 <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a href="#" class="music-duration">00:02:56</a></p>
               </div>
-              <!-- Music Player -->
+              <!-- Music Player 
               <div class="poca-music-player">
                 <audio preload="auto" controls>
                   <source src="audio/dummy-audio.mp3">
                 </audio>
               </div>
-              <!-- Likes, Share & Download -->
+              <!-- Likes, Share & Download 
               <div class="likes-share-download d-flex align-items-center justify-content-between">
                 <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
                 <div>
@@ -476,9 +484,9 @@ while($songRow = mysqli_fetch_assoc($songResult)){
           </div>
         </div>
 
-        <!-- Single gallery Item -->
+        <!-- Single gallery Item 
         <div class="col-12 col-md-6 single_gallery_item tech tutor wow fadeInUp" data-wow-delay="0.2s">
-          <!-- Welcome Music Area -->
+          <!-- Welcome Music Area 
           <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
             <div class="poca-music-thumbnail">
               <img src="./img/bg-img/9.jpg" alt="">
@@ -489,13 +497,13 @@ while($songRow = mysqli_fetch_assoc($songResult)){
               <div class="music-meta-data">
                 <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a href="#" class="music-duration">00:02:56</a></p>
               </div>
-              <!-- Music Player -->
+              <!-- Music Player 
               <div class="poca-music-player">
                 <audio preload="auto" controls>
                   <source src="audio/dummy-audio.mp3">
                 </audio>
               </div>
-              <!-- Likes, Share & Download -->
+              <!-- Likes, Share & Download 
               <div class="likes-share-download d-flex align-items-center justify-content-between">
                 <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
                 <div>
@@ -507,9 +515,9 @@ while($songRow = mysqli_fetch_assoc($songResult)){
           </div>
         </div>
 
-        <!-- Single gallery Item -->
+        <!-- Single gallery Item 
         <div class="col-12 col-md-6 single_gallery_item tech wow fadeInUp" data-wow-delay="0.2s">
-          <!-- Welcome Music Area -->
+          <!-- Welcome Music Area 
           <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
             <div class="poca-music-thumbnail">
               <img src="./img/bg-img/10.jpg" alt="">
@@ -520,13 +528,13 @@ while($songRow = mysqli_fetch_assoc($songResult)){
               <div class="music-meta-data">
                 <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a href="#" class="music-duration">00:02:56</a></p>
               </div>
-              <!-- Music Player -->
+              <!-- Music Player 
               <div class="poca-music-player">
                 <audio preload="auto" controls>
                   <source src="audio/dummy-audio.mp3">
                 </audio>
               </div>
-              <!-- Likes, Share & Download -->
+              <!-- Likes, Share & Download 
               <div class="likes-share-download d-flex align-items-center justify-content-between">
                 <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
                 <div>
@@ -547,12 +555,34 @@ while($songRow = mysqli_fetch_assoc($songResult)){
           <a href="#" class="btn poca-btn mt-70">Load More</a>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
   <!-- ***** Latest Episodes Area End ***** -->
+  <section class="poca-newsletter-area bg-img bg-overlay pt-50 jarallax" id="about" style="background-image: url(img/bg-img/15.jpg);">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Newsletter Content -->
+        <div class="col-12 col-lg-6">
+          <div class="newsletter-content mb-50">
+            <h2>About</h2>
+            <h6><?php echo $info ?></h6>
+          </div>
+        </div>
+        <!-- Newsletter Form 
+        <div class="col-12 col-lg-6">
+          <div class="newsletter-form mb-50">
+            <form action="#" method="post">
+              <input type="email" name="nl-email" class="form-control" placeholder="Your Email">
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>-->
+      </div>
+    </div>
+  </section>
 
   <!-- ***** Featured Guests Area Start ***** -->
-  <section class="featured-guests-area">
+  <section class="featured-guests-area" id="Members">
     <div class="container">
       <div class="row">
         <!-- Section Heading -->
@@ -565,7 +595,7 @@ while($songRow = mysqli_fetch_assoc($songResult)){
       </div>
 
       <div class="row justify-content-around">
-        <!-- Single Featured Guest -->
+        <!-- Single Featured Guest 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="single-featured-guest mb-80">
             <img src="img/bg-img/25.jpg" alt="">
@@ -574,20 +604,23 @@ while($songRow = mysqli_fetch_assoc($songResult)){
               <span>PRODUCER</span>
             </div>
           </div>
-        </div>
+        </div>-->
 
         <!-- Single Featured Guest -->
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <?php for ($i=0; $i<3;$i++){
+        echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="single-featured-guest mb-80">
-            <img src="img/bg-img/26.jpg" alt="">
+            <img src="img/member-img/'.$memberImage[$i].'" alt="">
             <div class="guest-info">
-              <h5>Jayden White</h5>
-              <span>DRUMMER</span>
+              <h5>'.$memberName[$i].'</h5>
+              <span>'.$memberPosition[$i].'</span>
             </div>
           </div>
-        </div>
+        </div>';
+      }
+        ?>
 
-        <!-- Single Featured Guest -->
+        <!-- Single Featured Guest 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="single-featured-guest mb-80">
             <img src="img/bg-img/27.jpg" alt="">
@@ -596,11 +629,35 @@ while($songRow = mysqli_fetch_assoc($songResult)){
               <span>ENTREPRENEUR</span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
   <!-- ***** Featured Guests Area End ***** -->
+  <!-- ***** Newsletter Area Start ***** -->
+  <section class="poca-newsletter-area bg-img bg-overlay pt-50 jarallax" id="Contact" style="background-image: url(img/bg-img/15.jpg);" >
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Newsletter Content -->
+        <div class="col-12 col-lg-6">
+          <div class="newsletter-content mb-50">
+            <h2>Contact</h2>
+            <h6><?php echo $contact ?></h6>
+          </div>
+        </div>
+        <!-- Newsletter Form 
+        <div class="col-12 col-lg-6">
+          <div class="newsletter-form mb-50">
+            <form action="#" method="post">
+              <input type="email" name="nl-email" class="form-control" placeholder="Your Email">
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>-->
+      </div>
+    </div>
+  </section>
+  <!-- ***** Newsletter Area End ***** -->
 
  
   <!-- ***** Footer Area Start ***** -->
