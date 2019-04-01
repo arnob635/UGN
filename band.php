@@ -1,10 +1,16 @@
 <?php
 
 include("connection.php");
+<<<<<<< HEAD
+$check = "SELECT COL 2,COL 3 from TABLE 1";
+
+$result = mysqli_query($conn, $check);
+=======
 //$check = "select  COL2,COL3 from TABLE2";
 
 $check = "SELECT bandName,img FROM bandlist";
 
+>>>>>>> f1bc17c5c9fb1371104ee006a64f6f84b5b34ba1
 
 //$result = mysqli_query($conn,$check);
 $result = mysqli_query($conn,$check);
@@ -13,9 +19,14 @@ $i=1;
 if(mysqli_num_rows($result)>0){
 
 while($row = mysqli_fetch_assoc($result)){
+<<<<<<< HEAD
+    $name[$i] = $row['COL 2'];
+    $image[$i] = $row['COL 3'];
+=======
 
     $name[$i] = $row['bandName'];
     $image[$i] = $row['img'];
+>>>>>>> f1bc17c5c9fb1371104ee006a64f6f84b5b34ba1
     $i=$i+1;
   }
 }
