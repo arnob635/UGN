@@ -16,13 +16,13 @@ if($num == 1){
 
 	echo '<script>
 
-location.replace("http://localhost/UGN/admin/index.html")
+location.replace("http://localhost/UGN/admin/index.php")
 
 </script>';
 }
 else{
 
-	echo "Incorrect Email/password";
+	echo "\n Incorrect Email/password";
 }
 
 ?>

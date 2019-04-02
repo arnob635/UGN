@@ -1,3 +1,33 @@
+<?php
+
+include("connection.php");
+
+
+$check = "SELECT Id,name,email FROM bandauth";
+$check2 = "SELECT * FROM songs";
+
+//echo "$num_rows Rows\n";
+$result = mysqli_query($conn,$check);
+$result2 = mysqli_query($conn,$check2);
+$num_rows =mysqli_num_rows($result);
+$num_rows2 =mysqli_num_rows($result2);
+$i = 1;
+
+if(mysqli_num_rows($result)>0){
+
+while($row = mysqli_fetch_assoc($result)){
+
+    $id[$i] = $row['Id'];
+    $name[$i] = $row['name'];
+    $email[$i] = $row['email'];
+
+    $i = $i + 1;
+  }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,14 +51,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <!-- Logo -->
           <a class="navbar-brand" href="#">UGN</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Dashboard</a></li>
-            <li><a href="pages.html">Pages</a></li>
-            <li><a href="songs.html">Songs</a></li>
-            <li><a href="bands.html">Bands</a></li>
+            <li class="active"><a href="index.php">Dashboard</a></li>
+            <li><a href="bands.php">Bands</a></li>
+            <li><a href="songs.php">Songs</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, Admin</a></li>
@@ -43,17 +73,6 @@
         <div class="row">
           <div class="col-md-10">
             <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <small> Manage Your Site</small></h1>
-          </div>
-          <div class="col-md-2">
-            <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Create Content
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Add Page</a></li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
@@ -72,16 +91,13 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="index.html" class="list-group-item active main-color-bg">
+              <a href="index.php" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Pages <span class="badge">12</span></a>
-              <a href="songs.html" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge">33</span></a>
-              <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge">203</span></a>
+              <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge"><?php echo $num_rows; ?></span></a>
+              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge"> <?php echo $num_rows; ?></span></a>
             </div>
 
-            
-            
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
@@ -92,22 +108,19 @@
               <div class="panel-body">
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 203</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $num_rows; ?></h2>
                     <h4>Bands</h4>
                   </div>
                 </div>
+
+
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 12</h2>
-                    <h4>Pages</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> 33</h2>
+                    <h2><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> <?php echo $num_rows2; ?></h2>
                     <h4>Songs</h4>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="well dash-box">
                     <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 12,334</h2>
@@ -117,7 +130,7 @@
               </div>
               </div>
 
-              <!-- Latest Users -->
+              <!-- Latest Bands -->
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Latest Bands</h3>
@@ -129,17 +142,12 @@
                         <th>Name</th>
                         <th>Email</th>
                       </tr>
-                      <td>1</td>
-                        <td>Nemesis</td>
-                        <td>nemesis@gmail.com</td>
+                      <?php for ($i = 1; $i <= $num_rows; $i++){
+                      echo '<td>'.$id[$i].'</td>
+                        <td>'.$name[$i].'</td>
+                        <td>'.$email[$i].'</td>
                         <td><a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Eve Jackson</td>
-                        <td>ejackson@yahoo.com</td>
-                        <td><a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
+                      </tr>';} ?>
                     </table>
                 </div>
               </div>
@@ -151,49 +159,7 @@
     <footer id="footer">
       <p>Copyright Underground Nation, &copy; 2019</p>
     </footer>
-    <!-- Modals -->
-
-    <!-- Add Page -->
-    <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Page</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Page Title</label>
-          <input type="text" class="form-control" placeholder="Page Title">
-        </div>
-        <div class="form-group">
-          <label>Page Body</label>
-          <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Published
-          </label>
-        </div>
-        <div class="form-group">
-          <label>Meta Tags</label>
-          <input type="text" class="form-control" placeholder="Add Some Tags...">
-        </div>
-        <div class="form-group">
-          <label>Meta Description</label>
-          <input type="text" class="form-control" placeholder="Add Meta Description...">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-
+    
   <script>
      CKEDITOR.replace( 'editor1' );
  </script>

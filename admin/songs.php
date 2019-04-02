@@ -1,3 +1,31 @@
+<?php
+
+include("connection.php");
+
+
+$check = "SELECT * FROM songs";
+
+
+//$result = mysqli_query($conn,$check);
+$result = mysqli_query($conn,$check);
+$num_rows =mysqli_num_rows($result);
+$i = 1;
+
+if(mysqli_num_rows($result)>0){
+
+while($row = mysqli_fetch_assoc($result)){
+
+    $id[$i] = $row['Id'];
+    $name[$i] = $row['songName'];
+    $Url[$i] = $row['songURL'];
+
+    $i = $i + 1;
+  }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,10 +53,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="pages.html">Pages</a></li>
-            <li class="active"><a href="songs.html">Songs</a></li>
-            <li><a href="bands.html">Bands</a></li>
+            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="bands.php">Bands</a></li>
+            <li class="active"><a href="songs.php">Songs</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, Admin</a></li>
@@ -44,17 +71,7 @@
           <div class="col-md-10">
             <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Songs <small> Manage Site Songs</small></h1>
           </div>
-          <div class="col-md-2">
-            <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Create Content
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Add Page</a></li>
-              </ul>
-            </div>
-          </div>
+       
         </div>
       </div>
     </header>
@@ -62,7 +79,7 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="index.php">Dashboard</a></li>
           <li class="active">Songs</li>
         </ol>
       </div>
@@ -73,12 +90,11 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="index.html" class="list-group-item active main-color-bg">
+              <a href="index.php" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Pages <span class="badge">12</span></a>
-              <a href="songs.html" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge">33</span></a>
-              <a href="bands.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge">203</span></a>
+              <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge">33</span></a>
+              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge">203</span></a>
             </div>
 
             
@@ -106,13 +122,13 @@
                         <th>Published</th>
                         <th></th>
                       </tr>
-                      <tr>
-                        <td> 1 </td>
-                        <td>Kobe </td>
-                        <td>www.blablabla.com</td>
+                      <?php for ($i = 1; $i <= $num_rows; $i++){
+                      echo '<td>'.$id[$i].'</td>
+                        <td>'.$name[$i].'</td>
+                        <td>'.$Url[$i].'</td>
                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                         <td><a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
+                      </tr>';} ?>
                     </table>
               </div>
               </div>
@@ -125,49 +141,6 @@
     <footer id="footer">
       <p>Copyright Underground Nation, &copy; 2019</p>
     </footer>
-
-    <!-- Modals -->
-
-    <!-- Add Page -->
-    <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Page</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Page Title</label>
-          <input type="text" class="form-control" placeholder="Page Title">
-        </div>
-        <div class="form-group">
-          <label>Page Body</label>
-          <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Published
-          </label>
-        </div>
-        <div class="form-group">
-          <label>Meta Tags</label>
-          <input type="text" class="form-control" placeholder="Add Some Tags...">
-        </div>
-        <div class="form-group">
-          <label>Meta Description</label>
-          <input type="text" class="form-control" placeholder="Add Meta Description...">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
 
   <script>
      CKEDITOR.replace( 'editor1' );
