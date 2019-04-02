@@ -7,7 +7,7 @@ include("connection.php");
 
 //session_start(); // this NEEDS TO BE AT THE TOP of the page before any output etc
    //echo $_SESSION['id'];
- $id = $_SESSION['id'];
+$id = $_SESSION['id'];
 
 $aboutInfo =$_POST['about'];
 $contact = $_POST['contact'];
