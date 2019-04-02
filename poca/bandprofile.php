@@ -156,6 +156,7 @@ while($mediaRow = mysqli_fetch_assoc($mediaResult)){
                 
                 <li><a href="#Songs">Songs</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#Members">Members</a></li>
                 <li><a href="#Contact">Contact</a></li>
               </ul>
 
