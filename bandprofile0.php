@@ -2,10 +2,12 @@
 
 include("connection.php");
 //$check = "select  COL2,COL3 from TABLE2";
-echo $_SESSION['id'];
-$id = $_SESSION['id'];
+//echo $_SESSION['id'];
+//$id = $_SESSION['id'];
 
-$check = "SELECT bandName,img FROM bandlist WHERE id = $id";
+$id = 1;
+
+$check = "SELECT bandName,img FROM bandlist WHERE id = '$id'";
 
 
 //$result = mysqli_query($conn,$check);
@@ -158,7 +160,6 @@ while($mediaRow = mysqli_fetch_assoc($mediaResult)){
 
                 <li><a href="#Songs">Songs</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#Members">Members</a></li>
                 <li><a href="#Contact">Contact</a></li>
               </ul>
 

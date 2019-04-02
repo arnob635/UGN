@@ -86,12 +86,15 @@
 
           <h2>Search Bands</h2>
 
-          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-
-          <!--   <h3>What other people have searched for..</h3>-->
+          <input type="text" id="myInput" onkeyup="showHint(this.value)" placeholder="Search for names.." title="Type in a name">
           <ul id="myUL">
-            <li><a href="#">Nemesis</a></li>
-            <li><a href="#">Black</a></li>
+          Suggestions:
+          <li><a href="#" id="txtHint"></a></li>
+          </ul>
+          <!--   <h3>What other people have searched for..</h3>
+          <ul id="myUL">
+            <li><a href="http://localhost/UGN/poca/bandprofile.php">Nemesis</a></li>
+            <li><p>Suggestions: <span id="txtHint"></span></p></li>
 
             <li><a href="#">Artcell</a></li>
             <li><a href="#">Martian Love</a></li>
@@ -100,6 +103,25 @@
             <li><a href="#">Conclusion</a></li>
             <li><a href="#">Attic</a></li>
           </ul>
+-->
+
+          <script>
+          function showHint(str) {
+              if (str.length == 0) {
+                  document.getElementById("txtHint").innerHTML = "";
+                  return;
+              } else {
+                  var xmlhttp = new XMLHttpRequest();
+                  xmlhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                          document.getElementById("txtHint").innerHTML = this.responseText;
+                      }
+                  };
+                  xmlhttp.open("GET", "search.php?q=" + str, true);
+                  xmlhttp.send();
+              }
+          }
+          </script>
 
           <script>
           function myFunction() {

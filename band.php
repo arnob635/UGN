@@ -1,16 +1,10 @@
 <?php
 
 include("connection.php");
-<<<<<<< HEAD
-$check = "SELECT COL 2,COL 3 from TABLE 1";
 
-$result = mysqli_query($conn, $check);
-=======
-//$check = "select  COL2,COL3 from TABLE2";
 
 $check = "SELECT bandName,img FROM bandlist";
 
->>>>>>> f1bc17c5c9fb1371104ee006a64f6f84b5b34ba1
 
 //$result = mysqli_query($conn,$check);
 $result = mysqli_query($conn,$check);
@@ -19,14 +13,10 @@ $i=1;
 if(mysqli_num_rows($result)>0){
 
 while($row = mysqli_fetch_assoc($result)){
-<<<<<<< HEAD
-    $name[$i] = $row['COL 2'];
-    $image[$i] = $row['COL 3'];
-=======
 
     $name[$i] = $row['bandName'];
     $image[$i] = $row['img'];
->>>>>>> f1bc17c5c9fb1371104ee006a64f6f84b5b34ba1
+
     $i=$i+1;
   }
 }
@@ -177,48 +167,72 @@ while($row = mysqli_fetch_assoc($result)){
                         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab-1">
                             <div class="row">
                                 <!-- Single Show Item -->
-                              <!--  <div class="col-12 col-md-6 col-lg-4">
+                              <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/<?php echo $image[1]; ?>" alt="">
+                                        <img src="img/bg-img/<?php echo $image[1] ?>" alt="">
                                         <div class="overlay-content">
                                             <div class="text-center">
                                                 <h5><?php echo $name[1] ?> </h5>
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
 
                                 <!-- Single Show Item -->
-                              <?php for ($i=1; $i<4;$i++){
-                                echo $i;
 
-                               echo  '<br><div class="col-12 col-md-6 col-lg-4"><br>
-                                     <div class="single-show-item mb-30"><br>
-                                         <img src="img/bg-img/"'.$image[$i] .'alt=""><br>
-                                         <div class="overlay-content"><br>
-                                             <div class="text-center"><br>
-                                                 <h5>'. $name[$i].'</h5><br>
-                                               </div><br>
-                                        </div><br>
-                                     </div><br>
-                                  </div><br>';
-                              } ?>
+                               <br><div class="col-12 col-md-6 col-lg-4">
+                                     <div class="single-show-item mb-30">
+                                         <img src="img/bg-img/<?php echo $image[2]; ?>"alt=""><br>
+                                         <div class="overlay-content">
+                                             <div class="text-center">
+                                                 <h5><?php echo $name[2] ?></h5>
+                                               </div>
+                                        </div>
+                                     </div>
+                                  </div>
 
 
-                                <!-- Single Show Item
+
+                                <!-- Single Show Item -->
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="single-show-item mb-30">
-                                        <img src="img/bg-img/<?php echo $image[1]; ?>" alt="">
+                                        <img src="img/bg-img/<?php echo $image[3]; ?>" alt="">
                                         <div class="overlay-content">
                                             <div class="text-center">
                                                 <h5><?php echo $name[1] ?></h5>
                                             </div>
                                         </div>
                                     </div>
-                                </div>-->
+                                </div>
                             </div>
                         </div>
                     </div>
+
+   <section class="featured-guests-area">
+    <div class="container">
+      <div class="row">
+        <!-- Section Heading -->
+        <div class="col-12">
+          <div class="section-heading text-center">
+            <h2>other Bands</h2>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-around">
+
+      	<?php for ($i=1; $i<4;$i++){
+        echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="single-featured-guest mb-80">
+            <img src="img/bg-img/'.$image[$i].'" alt="">
+            <div class="guest-info">
+              <h5>'.$name[$i].'</h5>
+            </div>
+          </div>
+        </div>';
+      }
+        ?>
 
 
 
