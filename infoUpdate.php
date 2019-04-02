@@ -2,6 +2,7 @@
 
 
 include("connection.php");
+
 //include("signup.php"); //because this script will run after sign up, what about updating previous user?
 
 //session_start(); // this NEEDS TO BE AT THE TOP of the page before any output etc
@@ -10,6 +11,9 @@ include("connection.php");
 
 $aboutInfo =$_POST['about'];
 $contact = $_POST['contact'];
+$fb = $_POST['facebook'];
+$insta = $_POST['instagram'];
+$yotube = $_POST['youtube'];
 
 $check = "SELECT * FROM bandinfo WHERE id = '$id'";
 
@@ -32,12 +36,15 @@ else if($aboutInfo=="" || $contact==""){
 
 else{
 	$reg = "INSERT INTO bandinfo(id,info,contact) VALUES ('$id','$aboutInfo','$contact')";
-	if(mysqli_query($conn,$reg)){
+  $social = "INSERT INTO socialmedia(id,fb,ign,youtube) VALUES ('$id','$fb', '$insta','$youtube')";
+	if(mysqli_query($conn,$reg) && mysqli_query($conn,$social) ){
 		echo "New record created succesfully";
 		echo "Welcome to UGN";
+
+
     echo '<script>
 
-  location.replace("http://localhost/UGN/index.html")
+  location.replace("http://localhost/UGN/poca/bandprofile.php")
 
 </script>';
 
