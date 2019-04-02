@@ -2,6 +2,7 @@
 
 
 include("connection.php");
+
 //include("signup.php"); //because this script will run after sign up, what about updating previous user?
 
 //session_start(); // this NEEDS TO BE AT THE TOP of the page before any output etc

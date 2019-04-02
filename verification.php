@@ -11,27 +11,19 @@ $result = mysqli_query($conn,$check);
 
 $num = mysqli_num_rows($result);
 
+$getId = "SELECT id FROM bandauth WHERE email = '$email'";
 
+$id = mysqli_query($conn,$getId);
+
+$_SESSION['id'] = $id;
 
 
 if($num==1){
 
-	$getId = "SELECT id FROM bandauth WHERE email = '$email'";
-
-	$id = mysqli_query($conn,$getId);
-
-	while($row = $id->fetch_assoc()) {
-     	$id_row = $row['id'];
-    }
-		//$id_row['id'] = $id->fetch_assoc()
-	//$id_row = $result->fetch_assoc()
-	//$id = mysqli_insert_id($conn);
-		$_SESSION['id'] = $id_row;
-
 	echo "Login succesfull";
 	echo '<script>
 
-location.replace("http://localhost/UGN/poca/bandprofile.php")
+location.replace("http://localhost/UGN/bandprofile0.php")
 
 </script>';
 }
