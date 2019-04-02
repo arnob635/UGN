@@ -2,6 +2,7 @@
 
 include("connection.php");
 
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -11,9 +12,11 @@ $result = mysqli_query($conn,$check);
 
 $num = mysqli_num_rows($result);
 
-$getId = "SELECT id FROM bandauth WHERE email = '$email'";
+//$getId = "SELECT id FROM bandauth WHERE email = '$email'";
 
-$id = mysqli_query($conn,$getId);
+//$id = mysqli_query($conn,$getId);
+
+$id = mysqli_insert_id($conn);
 
 $_SESSION['id'] = $id;
 
@@ -23,9 +26,10 @@ if($num==1){
 	echo "Login succesfull";
 	echo '<script>
 
-location.replace("http://localhost/UGN/bandprofile0.php")
 
+location.replace("http://localhost/UGN/bandUpdater.html")
 </script>';
+session_start();
 }
 else{
 	echo "Incorrect Email/password";
