@@ -2,6 +2,7 @@
 
 include("connection.php");
 
+//This does not work!
 // get the q parameter from URL
 $q = $_REQUEST["q"];
 
