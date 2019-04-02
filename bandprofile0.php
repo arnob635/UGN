@@ -2,10 +2,12 @@
 
 include("connection.php");
 //$check = "select  COL2,COL3 from TABLE2";
-echo $_SESSION['id'];
-$id = $_SESSION['id'];
+//echo $_SESSION['id'];
+//$id = $_SESSION['id'];
 
-$check = "SELECT bandName,img FROM bandlist WHERE id = $id";
+$id = 1;
+
+$check = "SELECT bandName,img FROM bandlist WHERE id = '$id'";
 
 
 //$result = mysqli_query($conn,$check);
