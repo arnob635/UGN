@@ -62,7 +62,7 @@ $members = "SELECT * FROM members WHERE id = $id";
 
 //$result = mysqli_query($conn,$check);
 $memberResult = mysqli_query($conn,$members);
-
+$num_rows = mysqli_num_rows($memberResult);
 
 if(mysqli_num_rows($memberResult)>0){
 
@@ -610,7 +610,7 @@ while($mediaRow = mysqli_fetch_assoc($mediaResult)){
         </div>-->
 
         <!-- Single Featured Guest -->
-        <?php for ($i=0; $i<3;$i++){
+        <?php for ($i=0; $i<$num_rows;$i++){
         echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="single-featured-guest mb-80">
             <img src="img/member-img/'.$memberImage[$i].'" alt="">
