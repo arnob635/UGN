@@ -3,11 +3,16 @@
 include("connection.php");
 
 
+
 $check = "SELECT Id,name,email FROM bandauth";
+$check2 = "SELECT * FROM songs";
 
-
-//$result = mysqli_query($conn,$check);
+//echo "$num_rows Rows\n";
 $result = mysqli_query($conn,$check);
+$result2 = mysqli_query($conn,$check2);
+$num_rows =mysqli_num_rows($result);
+$num_rows2 =mysqli_num_rows($result2);
+
 $i = 1;
 
 if(mysqli_num_rows($result)>0){
@@ -94,8 +99,8 @@ while($row = mysqli_fetch_assoc($result)){
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               
-              <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge">33</span></a>
-              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge">203</span></a>
+              <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge"> <?php echo $num_rows2; ?></span></a>
+              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge"> <?php echo $num_rows; ?></span></a>
             </div>
 
             
@@ -109,7 +114,7 @@ while($row = mysqli_fetch_assoc($result)){
               <div class="panel-body">
                 <div class="row">
                       <div class="col-md-12">
-                          <input class="form-control" type="text" placeholder="Filter Bands...">
+                          <input class="form-control" type="text" placeholder="Search Bands...">
                       </div>
                 </div>
                 <br>
@@ -120,14 +125,26 @@ while($row = mysqli_fetch_assoc($result)){
                         <th>Email</th>
                         <th></th>
                       </tr>
-                      <?php for ($i = 1; $i < 3; $i++){
+                      <?php for ($i = 1; $i <= $num_rows; $i++){
+
                       echo '<td>'.$id[$i].'</td>
                         <td>'.$name[$i].'</td>
                         <td>'.$email[$i].'</td>
-                        <td><a class="btn btn-danger" href="#">Delete</a></td>
                       </tr>';} ?>
+
                       
                     </table>
+                     <form name="form" action="delete.php" method="POST">
+                      Enter ID: 
+                      <input type="text" name="Id" value="">
+
+                    <center>
+                      <td><a class="btn btn-danger" href="delete.php" type="submit">Delete</a></td>
+                    </center>
+                  </form>
+                     
+                        
+
               </div>
               </div>
 
@@ -135,6 +152,7 @@ while($row = mysqli_fetch_assoc($result)){
         </div>
       </div>
     </section>
+    
 
     <footer id="footer">
       <p>Copyright Underground Nation, &copy; 2019</p>

@@ -3,7 +3,14 @@
 include("connection.php");
 
 
+$check2 = "SELECT Id,name,email FROM bandauth";
 $check = "SELECT * FROM songs";
+
+//echo "$num_rows Rows\n";
+$result = mysqli_query($conn,$check);
+$result2 = mysqli_query($conn,$check2);
+$num_rows =mysqli_num_rows($result);
+$num_rows2 =mysqli_num_rows($result2);
 
 
 //$result = mysqli_query($conn,$check);
@@ -93,8 +100,8 @@ while($row = mysqli_fetch_assoc($result)){
               <a href="index.php" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge">33</span></a>
-              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge">203</span></a>
+              <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge"><?php echo $num_rows; ?></span></a>
+              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge"><?php echo $num_rows2; ?></span></a>
             </div>
 
             
@@ -110,7 +117,7 @@ while($row = mysqli_fetch_assoc($result)){
               <div class="panel-body">
                 <div class="row">
                       <div class="col-md-12">
-                          <input class="form-control" type="text" placeholder="Filter Songs...">
+                          <input class="form-control" type="text" placeholder="Search Songs...">
                       </div>
                 </div>
                 <br>

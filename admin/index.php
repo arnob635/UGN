@@ -94,7 +94,7 @@ while($row = mysqli_fetch_assoc($result)){
               <a href="index.php" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge"><?php echo $num_rows; ?></span></a>
+              <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge"><?php echo $num_rows2; ?></span></a>
               <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge"> <?php echo $num_rows; ?></span></a>
             </div>
 
