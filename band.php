@@ -10,6 +10,9 @@ $check = "SELECT bandName,img FROM bandlist";
 $result = mysqli_query($conn,$check);
 $i=1;
 
+$num_rows = mysqli_num_rows($result);
+//echo $num_rows;
+
 if(mysqli_num_rows($result)>0){
 
 while($row = mysqli_fetch_assoc($result)){
@@ -222,7 +225,7 @@ while($row = mysqli_fetch_assoc($result)){
 
       <div class="row justify-content-around">
 
-      	<?php for ($i=1; $i<4;$i++){
+      	<?php for ($i=1; $i<=$num_rows;$i++){
         echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="single-featured-guest mb-80">
             <img src="img/bg-img/'.$image[$i].'" alt="">
