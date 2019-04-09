@@ -5,15 +5,32 @@ include("connection.php");
 
 $check = "SELECT Id,name,email FROM bandauth";
 $check2 = "SELECT * FROM songs";
+$check3 = "SELECT * FROM members";
+$check4 = "SELECT visits FROM counter WHERE id = 1";
+
+
 
 //echo "$num_rows Rows\n";
 $result = mysqli_query($conn,$check);
 $result2 = mysqli_query($conn,$check2);
+$result3 = mysqli_query($conn,$check3);
+$result4 = mysqli_query($conn,$check4);
 $num_rows =mysqli_num_rows($result);
 $num_rows2 =mysqli_num_rows($result2);
-$i = 1;
+$num_rows3 =mysqli_num_rows($result3);
 
-if(mysqli_num_rows($result)>0){
+// visitor count
+if(mysqli_num_rows($result4) > 0){
+
+while($row = mysqli_fetch_assoc($result4)){
+
+    $visit = $row['visits'];
+  }
+}
+
+
+$i = 1;
+if(mysqli_num_rows($result) > 0){
 
 while($row = mysqli_fetch_assoc($result)){
 
@@ -25,8 +42,8 @@ while($row = mysqli_fetch_assoc($result)){
   }
 }
 
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,10 +55,13 @@ while($row = mysqli_fetch_assoc($result)){
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js">
+      
+    </script>
   </head>
-  <body>
+  
 
+  <body>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -59,6 +79,8 @@ while($row = mysqli_fetch_assoc($result)){
             <li class="active"><a href="index.php">Dashboard</a></li>
             <li><a href="bands.php">Bands</a></li>
             <li><a href="songs.php">Songs</a></li>
+            <li><a href="members.php">Members</a></li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, Admin</a></li>
@@ -95,7 +117,8 @@ while($row = mysqli_fetch_assoc($result)){
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <a href="songs.php" class="list-group-item"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Songs <span class="badge"><?php echo $num_rows2; ?></span></a>
-              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Bands <span class="badge"> <?php echo $num_rows; ?></span></a>
+              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> Bands <span class="badge"> <?php echo $num_rows; ?></span></a>
+              <a href="bands.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Members <span class="badge"> <?php echo $num_rows3; ?></span></a>
             </div>
 
           </div>
@@ -108,7 +131,7 @@ while($row = mysqli_fetch_assoc($result)){
               <div class="panel-body">
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $num_rows; ?></h2>
+                    <h2><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <?php echo $num_rows; ?></h2>
                     <h4>Bands</h4>
                   </div>
                 </div>
@@ -123,7 +146,14 @@ while($row = mysqli_fetch_assoc($result)){
 
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 12,334</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $num_rows3; ?></h2>
+                    <h4>Members</h4>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> <?php echo $visit; ?></h2>
                     <h4>Visitors</h4>
                   </div>
                 </div>
@@ -136,19 +166,37 @@ while($row = mysqli_fetch_assoc($result)){
                   <h3 class="panel-title">Latest Bands</h3>
                 </div>
                 <div class="panel-body">
+
                   <table class="table table-striped table-hover">
                       <tr>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
                       </tr>
-                      <?php for ($i = 1; $i <= $num_rows; $i++){
+  
+        <tr>
+         <?php for ($i = 1; $i <= $num_rows; $i++){
+
                       echo '<td>'.$id[$i].'</td>
                         <td>'.$name[$i].'</td>
                         <td>'.$email[$i].'</td>
-                        <td><a class="btn btn-danger" href="#">Delete</a></td>
+                         <td align="center"><input type="checkbox" name="checked_id[]" class="checkbox" value="<?php echo '.$id[$i].'; ?>"/></td> 
+                        
                       </tr>';} ?>
-                    </table>
+            </table>
+
+            <input type="submit" class="btn btn-danger" name="submit" value="Delete"/>
+              
+              <?php 
+
+              if(isset ($_REQUEST["submit"])){
+
+                $delete = $_REQUEST['delete'];
+                $a = implode(",", $delete);
+                mysql_query("delete from bandauth where Id in ($a)");
+                
+
+} ?>
                 </div>
               </div>
           </div>

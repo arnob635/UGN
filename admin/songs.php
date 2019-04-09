@@ -134,7 +134,6 @@ while($row = mysqli_fetch_assoc($result)){
                         <td>'.$name[$i].'</td>
                         <td>'.$Url[$i].'</td>
                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td><a class="btn btn-danger" href="#">Delete</a></td>
                       </tr>';} ?>
                     </table>
               </div>

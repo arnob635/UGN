@@ -130,18 +130,12 @@ while($row = mysqli_fetch_assoc($result)){
                       echo '<td>'.$id[$i].'</td>
                         <td>'.$name[$i].'</td>
                         <td>'.$email[$i].'</td>
+                        
                       </tr>';} ?>
 
                       
                     </table>
-                     <form name="form" action="delete.php" method="POST">
-                      Enter ID: 
-                      <input type="text" name="Id" value="">
-
-                    <center>
-                      <td><a class="btn btn-danger" href="delete.php" type="submit">Delete</a></td>
-                    </center>
-                  </form>
+                  
                      
                         
 
