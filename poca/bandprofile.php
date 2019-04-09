@@ -201,8 +201,8 @@ while($mediaRow = mysqli_fetch_assoc($mediaResult)){
                 <h2 data-animation="fadeInUp" data-delay="100ms"><?php echo $name ?></h2>
                 <h5 data-animation="fadeInUp" data-delay="300ms"><?php echo $info ?></h5>
                 <div class="welcome-btn-group">
-                  <a href="#" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe with iTunes</a>
-                  <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a>
+                  <a href="./payment/index.php" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Subscribe</a>
+                  <!--<a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a> --!>
                 </div>
               </div>
               <!-- Welcome Music Area -->
